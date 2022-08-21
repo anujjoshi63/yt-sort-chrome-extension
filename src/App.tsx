@@ -60,7 +60,7 @@ const App = () => {
 				chrome.tabs.sendMessage(currentTabId, message, response => {
 					try {
 						let data = JSON.parse(response);
-						console.log({ data });
+						// console.log({ data });
 						setList(data.sort());
 						if (
 							data.length > 0 &&

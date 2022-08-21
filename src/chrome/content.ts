@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ChromeMessage, Sender } from '../types';
 
 const messagesFromReactAppListener = (
@@ -73,7 +72,7 @@ const test = (...props: any) => {
 		)!.children
 	];
 	let modX = x.map((el, ind) => {
-		let text =
+		let text: any =
 			el.childNodes[3].childNodes[1].childNodes[1].childNodes[1]
 				.childNodes[5].childNodes[0];
 		// @ts-ignore
@@ -108,8 +107,8 @@ const test = (...props: any) => {
 
 		return {
 			title:
-				// @ts-ignore
-				el.children[1].children[0].children[1].children[0].children[1]
+			el.children[1].children[0].children[1].children[0].children[1]
+			// @ts-ignore
 					.innerText,
 			thumbnail,
 			url:
