@@ -6,6 +6,8 @@ yeah but how do i use it?
 
 1. `git clone https://github.com/anujjoshi63/yt-sort-chrome-extension.git`
 
+1. `npm install`
+
 1. run `npm run build` **note: this will fail on windows. read solution before judging :)**
 
 1. go to `chrome://extensions/`
