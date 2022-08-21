@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ChromeMessage, Sender } from '../types';
 
 const messagesFromReactAppListener = (
@@ -7,10 +8,10 @@ const messagesFromReactAppListener = (
 	// @ts-ignore
 	response
 ) => {
-	console.log('[content.js]. Message received', {
-		message,
-		sender
-	});
+	// console.log('[content.js]. Message received', {
+	// 	message,
+	// 	sender
+	// });
 
 	if (
 		sender.id === chrome.runtime.id &&
@@ -55,46 +56,11 @@ const messagesFromReactAppListener = (
 		message.from === Sender.React &&
 		message.message === 'delete logo'
 	) {
-		// console.log(
-		// 	// @ts-ignore
-		// 	document.querySelector(
-		// 		' #contents.style-scope ytd-playlist-video-list-renderer #contents'
-		// 	)!.children[0] // @ts-ignore
-		// 	// .map(el => {
-		// 	// 	// @ts-ignore
-		// 	// 	el = el.__data.data;
-		// 	// 	let newObj: any = {};
-		// 	// 	// @ts-ignore
-		// 	// 	newObj.videoId = el.videoId;
-		// 	// 	// @ts-ignore
-		// 	// 	newObj.thumbnail = el.thumbnail.thumbnails[0].url;
-		// 	// 	// @ts-ignore
-		// 	// 	newObj.time = el.lengthText.simpleText;
-		// 	// 	// @ts-ignore
-		// 	// 	newObj.title = el.title.runs[0].text;
-		// 	// 	// @ts-ignore
-		// 	// 	newObj.author = el.shortBylineText.runs[0].text;
-		// 	// 	return newObj;
-		// 	// })
-		// );
 		response('AA');
-		//
-		// TRY MAPPING BRO INSTEAD OF SENDING DOM ELEMENTS SEND JS OBJECTS
-		//
-		// response(
-		// 	JSON.stringify(
-		// 		// @ts-ignore
-		// 		...new Array(
-		// 			document.querySelector(
-		// 				' #contents.style-scope ytd-playlist-video-list-renderer #contents'
-		// 			)!.children
-		// 		)[0]
-		// 	)
-		// );
 	}
 };
 const test = (...props: any) => {
-	console.log({ props });
+	// console.log({ props });
 	window.scrollTo(
 		0,
 		document.querySelector(
@@ -116,32 +82,47 @@ const test = (...props: any) => {
 			text = text.parentNode.childNodes[2].children[1].innerText;
 		// @ts-ignore
 		else text = text.childNodes[2].innerText;
-		// console.log(text);
+
+		let lengthFactor = text.split(':').length;
+		let modText = text.split(':');
+		let seconds = 0;
+		if (lengthFactor === 1) {
+			seconds = parseInt(modText[0]);
+		} else if (lengthFactor === 2) {
+			seconds = parseInt(modText[0]) * 60 + parseInt(modText[1]);
+		} else if (lengthFactor === 3) {
+			seconds =
+				parseInt(modText[0]) * 60 * 60 +
+				parseInt(modText[1]) * 60 +
+				parseInt(modText[2]);
+		}
+
+		// console.log({ length });
 		let thumbnail =
 			el.children[1].children[0].children[0].children[0].children[1] // @ts-ignore
 				.children[0].src;
 		thumbnail =
 			thumbnail.trim() == ''
-				? 'https://via.placeholder.com/300x200'
+				? 'https://via.placeholder.com/168x94'
 				: thumbnail.trim();
+
 		return {
 			title:
-			el.children[1].children[0].children[1].children[0].children[1]
-			// @ts-ignore
+				// @ts-ignore
+				el.children[1].children[0].children[1].children[0].children[1]
 					.innerText,
 			thumbnail,
-
+			url:
+				// @ts-ignore
+				el.childNodes[3].childNodes[1].childNodes[1].childNodes[1].href,
 			author:
 				// @ts-ignore
 				el.children[1].children[0].children[1].children[1].innerText,
-			time: text || 'NONE'
+			time: text || 'NONE',
+			seconds
 		};
 	});
 
-	// for (let k of x) {
-	// 	// @ts-ignore
-	// 	console.log(k);
-	// }
 	props[2](JSON.stringify(modX));
 };
 /**
