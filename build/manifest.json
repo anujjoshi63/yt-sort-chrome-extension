@@ -1,0 +1,34 @@
+{
+	"name": "Youtube PL sorter",
+	"description": "Sort your playlist length-wise",
+	"version": "1.0",
+	"manifest_version": 2,
+	"browser_action": {
+		"default_popup": "index.html",
+		"default_title": "Open the sorter popup"
+	},
+	"permissions": [
+		"activeTab"
+	],
+	"optional_permissions": [
+		"<all_urls>"
+	],
+	"icons": {
+		"16": "yt1.png",
+		"48": "yt1.png",
+		"128": "yt1.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*/*",
+				"https://*/*"
+			],
+			"js": [
+				"./static/js/content.js"
+			],
+			"all_frames": false,
+			"run_at": "document_end"
+		}
+	]
+}
