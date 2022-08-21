@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import { ChromeMessage, Sender } from './types';
 
 import './App.css';
 
 const App = () => {
-	const [responseFromContent, setResponseFromContent] = useState<string>('');
 	const [list, setList] = useState([
 		{
 			title: 'Click the get list button when ready :)',
@@ -15,24 +13,10 @@ const App = () => {
 			seconds: 100
 		}
 	]);
-	/**
-	 * Get current URL
-	 */
-	useEffect(() => {
-		const queryInfo = { active: true, lastFocusedWindow: true };
-
-		chrome.tabs &&
-			chrome.tabs.query(queryInfo, tabs => {
-				const url = tabs[0].url;
-				// @ts-ignore
-				setUrl(url);
-			});
-	}, []);
 
 	/**
 	 * Send message to the content script
 	 */
-
 	const sendRemoveMessage = () => {
 		setList([
 			{
@@ -55,21 +39,17 @@ const App = () => {
 
 		chrome.tabs &&
 			chrome.tabs.query(queryInfo, tabs => {
-				const currentTabId = tabs[0].id;
-				// @ts-ignore
+				const currentTabId = Number(tabs[0].id);
 				chrome.tabs.sendMessage(currentTabId, message, response => {
 					try {
 						let data = JSON.parse(response);
-						// console.log({ data });
 						setList(data.sort());
 						if (
 							data.length > 0 &&
-							// @ts-ignore
-							data.some(el => el.thumbnail == '')
+							data.some((el: any) => el.thumbnail === '')
 						) {
 							setTimeout(sendRemoveMessage, 200);
 						}
-						setResponseFromContent('ASDASDDone!');
 					} catch (e) {
 						setTimeout(sendRemoveMessage, 200);
 						console.log('error', e);
@@ -79,7 +59,7 @@ const App = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<button onClick={sendRemoveMessage} className="get-list-btn">
 				🚀 Get list
 			</button>
@@ -90,12 +70,11 @@ const App = () => {
 						<div
 							key={el.title}
 							onClick={() => {
-								// open google in new tab
 								window.open(el.url, '_blank');
 							}}
 							className="card"
 						>
-							<img src={el.thumbnail} />
+							<img src={el.thumbnail} alt={'video thumbnail'} />
 							<div style={{ padding: '1rem' }}>
 								<p>{el.title}</p>
 								<div style={{ marginTop: '1rem' }}>
@@ -115,7 +94,7 @@ const App = () => {
 						</div>
 					))}
 			</div>
-		</div>
+		</>
 	);
 };
 export default App;
