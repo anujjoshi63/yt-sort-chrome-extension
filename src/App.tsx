@@ -8,46 +8,10 @@ const App = () => {
 	const [responseFromContent, setResponseFromContent] = useState<string>('');
 	const [list, setList] = useState([
 		{
-			title: 'MS In US| Application Timeline| Documents, Deadlines and When to take Exams|',
-			thumbnail:
-				'https://i.ytimg.com/vi/gZYZc7BSLoM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAr-SYN73a8Fwi2cZ8_2heDMVJ9pA',
-			author: 'Nachi Talks',
-			time: '10:02'
-		},
-		{
-			title: 'Evolution of DevOps With @Rawkode Academy',
-			thumbnail:
-				'https://i.ytimg.com/vi/2kROABaJrks/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBDrAAclf2O4jGI-Zan1Z_Mcr-gfA',
-			author: 'Kunal Kushwaha',
-			time: '33:56'
-		},
-		{
-			title: 'How To Shortlist Universities for Masters Abroad| Complete Walk Through|',
-			thumbnail:
-				'https://i.ytimg.com/vi/WJHqSfDnlR8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLByCjMx1ygZ3Mfv1mKOG1k7VE3sqg',
-			author: 'Nachi Talks',
-			time: '17:26'
-		},
-		{
-			title: 'checking out deno + fresh, learning golang | neovim, tmux',
-			thumbnail:
-				'https://i.ytimg.com/vi/3b_eBAjuD_0/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC-k-s07P-jPO8fJk3SqpK4D7Egdg',
-			author: 'Sean Walker',
-			time: '1:11:40'
-		},
-		{
-			title: 'Ryan Carniato on Solid.js, Jarred Sumner on Bun, & Alex Cole on e2e Reactivity',
-			thumbnail:
-				'https://i.ytimg.com/vi/qpAkYk1LK-U/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCUAwQvMXggiRAko_opbktYXrCBTQ',
-			author: 'Real World React',
-			time: '1:29:25'
-		},
-		{
-			title: 'Full Stack Invoice App Using Next js & MongoDB Atlas Tutorial | Next js Project',
-			thumbnail:
-				'https://i.ytimg.com/vi/hNczF4zcu2Q/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCRRgICvf5_A4eXZgnddbhXLNpULQ',
-			author: 'Coding With Muhib',
-			time: '3:05:24'
+			title: 'Loading...',
+			thumbnail: 'https://via.placeholder.com/168x94',
+			author: '...',
+			time: '...'
 		}
 	]);
 	/**
