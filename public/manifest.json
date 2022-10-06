@@ -1,5 +1,5 @@
 {
-	"name": "Youtube PL sorter",
+	"name": "Youtube playlist sorter",
 	"description": "Sort your playlist length-wise",
 	"version": "1.0",
 	"manifest_version": 2,
@@ -14,9 +14,10 @@
 		"<all_urls>"
 	],
 	"icons": {
-		"16": "yt1.png",
-		"48": "yt1.png",
-		"128": "yt1.png"
+		"16": "yt16.png",
+		"48": "yt48.png",
+		"128": "yt128.png",
+		"512": "yt512.png"
 	},
 	"content_scripts": [
 		{
