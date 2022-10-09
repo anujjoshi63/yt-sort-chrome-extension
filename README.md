@@ -2,6 +2,8 @@
 
 yeah but how do i use it?
 
+For firefox you can download it from [here](https://addons.mozilla.org/en-US/firefox/addon/youtube-playlist-sorter/)
+
 ## building
 
 1. `git clone https://github.com/anujjoshi63/yt-sort-chrome-extension.git`
